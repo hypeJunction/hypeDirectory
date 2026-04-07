@@ -5,7 +5,9 @@
 	"description": "Improved members pages for Elgg",
 	"homepage": "http://hypejunction.com",
 	"keywords": [
-		"elgg", "plugin", "members"
+		"elgg",
+		"plugin",
+		"members"
 	],
 	"extra": {
 		"installer-name": "hypeDirectory"
@@ -18,13 +20,17 @@
 		}
 	],
 	"require": {
-		"php": ">=5.5",
+		"php": ">=7.1",
 		"composer/installers": "~1.0"
 	},
 	"autoload": {
-		"psr-0": {
-			"hypeJunction/": "classes/hypeJunction/"
+		"psr-4": {
+			"hypeJunction\\Directory\\": "classes/hypeJunction/Directory/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
 		}
 	}
 }
-

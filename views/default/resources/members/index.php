@@ -6,7 +6,7 @@ if (elgg_get_plugin_setting('disable_public_access', 'hypeDirectory')) {
 
 $tabs = \hypeJunction\Directory\Menus::getTabs();
 if (empty($tabs)) {
-	forward('', '404');
+	throw new \Elgg\Exceptions\Http\EntityNotFoundException();
 }
 
 $selected = elgg_extract('page', $vars);
@@ -24,14 +24,14 @@ $params = array(
 		'list_class' => 'elgg-list-members',
 		'item_class' => 'elgg-member',
 		'pagination_type' => 'default',
-		'base_url' => current_page_url(),
+		'base_url' => elgg_get_current_url(),
 		'list_id' => "members-$selected",
 	),
 );
 
 $content = elgg_trigger_plugin_hook('members:list', $selected, $params, null);
 if ($content === null) {
-	forward('', '404');
+	throw new \Elgg\Exceptions\Http\EntityNotFoundException();
 }
 
 if (elgg_is_xhr()) {
@@ -41,7 +41,7 @@ if (elgg_is_xhr()) {
 
 $title = elgg_echo("members:title:$selected");
 
-$body = elgg_view_layout('content', [
+$body = elgg_view_layout('default', [
 	'content' => $content,
 	'title' => $title,
 	'filter' => elgg_view('members/filter', [

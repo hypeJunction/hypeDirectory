@@ -9,10 +9,8 @@ $params['sort'] = 'last_action::desc';
 
 $time = time() - 600;
 
-$dbprefix = elgg_get_config('dbprefix');
-// WARNING: users_entity subtable removed in Elgg 3.0 — rewrite this SQL
-$params['options']['joins']['users_entity'] = "JOIN {$dbprefix}users_entity users_entity on e.guid = users_entity.guid";
-// WARNING: users_entity subtable removed in Elgg 3.0 — rewrite this SQL
-$params['options']['wheres']['online'] = "users_entity.last_action >= $time";
+$params['options']['wheres'][] = function(\Elgg\Database\QueryBuilder $qb, $alias) use ($time) {
+	return $qb->compare("{$alias}.last_action", '>=', $time, ELGG_VALUE_INTEGER);
+};
 
 echo elgg_view('lists/users', $params);
