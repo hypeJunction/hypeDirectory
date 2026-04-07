@@ -14,19 +14,21 @@ for ($i = 1; $i <= count($tabs); $i++) {
 
 foreach ($tabs as $tab) {
 	$name = $tab['name'];
-	echo elgg_view_input('select', [
+	echo elgg_view_field([
+		'#type' => 'select',
 		'name' => "params[tab:$name]",
-		'label' => elgg_echo("members:title:{$name}"),
-		'help' => elgg_echo('directory:tabs:position:help'),
-		'value' => $entity->{"tab:$name"} ? : $tab['priority'],
+		'#label' => elgg_echo("members:title:{$name}"),
+		'#help' => elgg_echo('directory:tabs:position:help'),
+		'value' => $entity->{"tab:$name"} ?: $tab['priority'],
 		'options_values' => $options_values,
 	]);
 }
 
-echo elgg_view_input('select', [
+echo elgg_view_field([
+	'#type' => 'select',
 	'name' => 'params[disable_public_access]',
-	'label' => elgg_echo('directory:disabled_public_access'),
-	'help' => elgg_echo('directory:disabled_public_access:help'),
+	'#label' => elgg_echo('directory:disabled_public_access'),
+	'#help' => elgg_echo('directory:disabled_public_access:help'),
 	'value' => $entity->disable_public_access,
 	'options_values' => [
 		0 => elgg_echo('option:no'),
@@ -50,10 +52,11 @@ foreach ($sorts as $sort) {
 	$sort_options[$sort] = elgg_echo("sort:user:$sort");
 }
 
-echo elgg_view_input('select', [
+echo elgg_view_field([
+	'#type' => 'select',
 	'name' => "params[default_sort]",
-	'label' => elgg_echo('directory:default_sort'),
-	'help' => elgg_echo('directory:default_sort:help'),
-	'value' => $entity->default_sort ? : 'alpha::asc',
+	'#label' => elgg_echo('directory:default_sort'),
+	'#help' => elgg_echo('directory:default_sort:help'),
+	'value' => $entity->default_sort ?: 'alpha::asc',
 	'options_values' => $sort_options,
 ]);
