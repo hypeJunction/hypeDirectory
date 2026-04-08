@@ -30,7 +30,9 @@ class Menus {
 		return $tabs;
 	}
 
-	public static function prepareTabs($hook, $type, $return, $params) {
+	public static function prepareTabs(\Elgg\Hook $hook) {
+		$return = $hook->getValue();
+
 
 		$return['all'] = [
 			'title' => elgg_echo('members:title:all'),
@@ -53,7 +55,9 @@ class Menus {
 		return $return;
 	}
 
-	public static function setupSiteMenu($hook, $type, $return, $params) {
+	public static function setupSiteMenu(\Elgg\Hook $hook) {
+		$return = $hook->getValue();
+
 
 		$tabs = self::getTabs();
 		if (empty($tabs)) {

@@ -13,12 +13,12 @@ class Lists {
 	 * @param array  $params Getter options
 	 * @return array
 	 */
-	public static function render($hook, $type, $return, $params) {
-		if ($return) {
+	public static function render(\Elgg\Hook $hook) {
+		if ($hook->getValue()) {
 			return;
 		}
-		if (elgg_view_exists("members/listing/$type")) {
-			return elgg_view("members/listing/$type", $params);
+		if (elgg_view_exists("members/listing/$hook->getType()")) {
+			return elgg_view("members/listing/$hook->getType()", $hook->getParams());
 		}
 	}
 }
