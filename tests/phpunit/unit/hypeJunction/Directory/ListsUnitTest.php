@@ -15,6 +15,9 @@ class ListsUnitTest extends UnitTestCase {
 
     public function down() {}
 
+    /**
+     * @return void
+     */
     public function testRenderReturnsNullWhenValuePresent(): void {
         $hook = $this->getMockBuilder(\Elgg\Hook::class)->getMock();
         $hook->method('getValue')->willReturn('existing');

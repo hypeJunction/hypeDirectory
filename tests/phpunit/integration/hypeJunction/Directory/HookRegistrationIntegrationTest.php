@@ -14,12 +14,18 @@ class HookRegistrationIntegrationTest extends IntegrationTestCase {
 
     public function down() {}
 
+    /**
+     * @return void
+     */
     public function testMembersConfigTabsHookRegistered(): void {
         $hooks = _elgg_services()->hooks;
         $registered = $hooks->hasHandler('members:config', 'tabs');
         $this->assertTrue($registered, 'hypeDirectory should register members:config/tabs hook');
     }
 
+    /**
+     * @return void
+     */
     public function testMembersListAllHookRegistered(): void {
         $hooks = _elgg_services()->hooks;
         $this->assertTrue(
@@ -28,6 +34,9 @@ class HookRegistrationIntegrationTest extends IntegrationTestCase {
         );
     }
 
+    /**
+     * @return void
+     */
     public function testSiteMenuRegisterHookRegistered(): void {
         $hooks = _elgg_services()->hooks;
         $this->assertTrue(

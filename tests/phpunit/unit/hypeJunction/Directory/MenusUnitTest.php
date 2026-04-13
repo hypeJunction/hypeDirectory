@@ -13,6 +13,9 @@ class MenusUnitTest extends UnitTestCase {
 
     public function down() {}
 
+    /**
+     * @return void
+     */
     public function testPrepareTabsInjectsAllTab(): void {
         $hook = $this->getMockBuilder(\Elgg\Hook::class)->getMock();
         $hook->method('getValue')->willReturn([]);
@@ -25,6 +28,9 @@ class MenusUnitTest extends UnitTestCase {
         $this->assertArrayHasKey('text', $result['all']);
     }
 
+    /**
+     * @return void
+     */
     public function testPrepareTabsNormalisesExistingEntries(): void {
         $hook = $this->getMockBuilder(\Elgg\Hook::class)->getMock();
         $hook->method('getValue')->willReturn([

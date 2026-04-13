@@ -11,3 +11,5 @@ robots.txt
 /vendor/
 composer.lock
 Gemfile.lock
+.phpunit.result.cache
+

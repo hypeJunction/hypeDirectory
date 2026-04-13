@@ -16,11 +16,17 @@ class RoutingIntegrationTest extends IntegrationTestCase {
 
     public function down() {}
 
+    /**
+     * @return void
+     */
     public function testResourceViewsExist(): void {
         $this->assertTrue(elgg_view_exists('resources/members/index'));
         $this->assertTrue(elgg_view_exists('resources/members/search'));
     }
 
+    /**
+     * @return void
+     */
     public function testListingViewsExist(): void {
         foreach (['all', 'alpha', 'newest', 'popular', 'online'] as $type) {
             $this->assertTrue(
@@ -30,11 +36,17 @@ class RoutingIntegrationTest extends IntegrationTestCase {
         }
     }
 
+    /**
+     * @return void
+     */
     public function testFilterAndSidebarViewsExist(): void {
         $this->assertTrue(elgg_view_exists('members/filter'));
         $this->assertTrue(elgg_view_exists('members/sidebar'));
     }
 
+    /**
+     * @return void
+     */
     public function testPluginSettingsViewExists(): void {
         $this->assertTrue(elgg_view_exists('plugins/hypeDirectory/settings'));
     }

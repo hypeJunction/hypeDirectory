@@ -4,11 +4,16 @@ namespace hypeJunction\Directory;
 
 class Menus {
 
-	public static function getTabs($selected = '', $filter = true) {
+	/**
+     * @param mixed $selected
+     * @param mixed $filter
+     * @return mixed
+     */
+    public static function getTabs($selected = '', $filter = true) {
 		$tabs = elgg_trigger_plugin_hook('members:config', 'tabs', null, []);
 		foreach ($tabs as $name => $tab) {
 			$priority = elgg_extract('priority', $tab, 1);
-			$priority = elgg_get_plugin_setting("tab:$name", 'hypeDirectory', $priority);
+			$priority = elgg_get_plugin_setting("tab:$name", 'hypedirectory', $priority);
 			if ($filter && !$priority) {
 				unset($tabs[$name]);
 				continue;
@@ -30,7 +35,11 @@ class Menus {
 		return $tabs;
 	}
 
-	public static function prepareTabs(\Elgg\Hook $hook) {
+	/**
+     * @param Elgg\Hook $hook
+     * @return mixed
+     */
+    public static function prepareTabs(\Elgg\Hook $hook) {
 		$return = $hook->getValue();
 
 
@@ -55,7 +64,11 @@ class Menus {
 		return $return;
 	}
 
-	public static function setupSiteMenu(\Elgg\Hook $hook) {
+	/**
+     * @param Elgg\Hook $hook
+     * @return mixed
+     */
+    public static function setupSiteMenu(\Elgg\Hook $hook) {
 		$return = $hook->getValue();
 
 

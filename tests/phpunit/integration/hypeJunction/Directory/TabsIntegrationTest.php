@@ -10,10 +10,17 @@ use Elgg\IntegrationTestCase;
  */
 class TabsIntegrationTest extends IntegrationTestCase {
 
-    public function up() {}
+    public function up() {
+        elgg_register_plugin_hook_handler('members:config', 'tabs', [Menus::class, 'prepareTabs'], 999);
+    }
 
-    public function down() {}
+    public function down() {
+        elgg_unregister_plugin_hook_handler('members:config', 'tabs', [Menus::class, 'prepareTabs']);
+    }
 
+    /**
+     * @return void
+     */
     public function testGetTabsReturnsAtLeastAllTab(): void {
         $tabs = Menus::getTabs();
         $this->assertIsArray($tabs);
@@ -21,8 +28,11 @@ class TabsIntegrationTest extends IntegrationTestCase {
         $this->assertSame('members/all', $tabs['all']['href'] ?? $tabs['all']['url'] ?? null);
     }
 
+    /**
+     * @return void
+     */
     public function testPluginSettingsCanHideTab(): void {
-        $plugin = elgg_get_plugin_from_id('hypeDirectory');
+        $plugin = elgg_get_plugin_from_id('hypedirectory');
         if (!$plugin) {
             $this->markTestSkipped('hypeDirectory plugin not installed in test DB');
         }
@@ -42,8 +52,11 @@ class TabsIntegrationTest extends IntegrationTestCase {
         }
     }
 
+    /**
+     * @return void
+     */
     public function testDefaultSortSettingAvailable(): void {
-        $plugin = elgg_get_plugin_from_id('hypeDirectory');
+        $plugin = elgg_get_plugin_from_id('hypedirectory');
         if (!$plugin) {
             $this->markTestSkipped('hypeDirectory plugin not installed in test DB');
         }

@@ -1,6 +1,6 @@
 <?php
 
-if (elgg_get_plugin_setting('disable_public_access', 'hypeDirectory')) {
+if (elgg_get_plugin_setting('disable_public_access', 'hypedirectory')) {
 	elgg_gatekeeper();
 }
 

@@ -14,6 +14,9 @@ class BootstrapIntegrationTest extends IntegrationTestCase {
 
     public function down() {}
 
+    /**
+     * @return void
+     */
     public function testMembersListHandlersUnregistered(): void {
         $hooks = _elgg_services()->hooks;
         foreach (['newest', 'alpha', 'popular', 'online'] as $type) {
