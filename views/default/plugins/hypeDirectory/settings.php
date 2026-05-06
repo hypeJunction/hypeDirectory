@@ -54,7 +54,7 @@ foreach ($sorts as $sort) {
 
 echo elgg_view_field([
 	'#type' => 'select',
-	'name' => "params[default_sort]",
+	'name' => 'params[default_sort]',
 	'#label' => elgg_echo('directory:default_sort'),
 	'#help' => elgg_echo('directory:default_sort:help'),
 	'value' => $entity->default_sort ?: 'alpha::asc',

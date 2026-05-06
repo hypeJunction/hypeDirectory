@@ -2,14 +2,19 @@
 
 namespace hypeJunction\Directory;
 
+/**
+ * Menus class.
+ */
 class Menus {
 
 	/**
-     * @param mixed $selected
-     * @param mixed $filter
-     * @return mixed
-     */
-    public static function getTabs($selected = '', $filter = true) {
+	 * Build the configured members-listing tab definitions.
+	 *
+	 * @param string $selected Name of the tab currently selected
+	 * @param bool   $filter   Whether to drop tabs disabled via plugin settings
+	 * @return array
+	 */
+	public static function getTabs($selected = '', $filter = true) {
 		$tabs = elgg_trigger_plugin_hook('members:config', 'tabs', null, []);
 		foreach ($tabs as $name => $tab) {
 			$priority = elgg_extract('priority', $tab, 1);
@@ -18,13 +23,16 @@ class Menus {
 				unset($tabs[$name]);
 				continue;
 			}
+
 			$tab['priority'] = (int) $priority;
 			if (!isset($tab['name'])) {
 				$tab['name'] = $name;
 			}
+
 			if (!isset($tab['selected']) && $selected) {
 				$tab['selected'] = $tab['name'] == $selected;
 			}
+
 			$tabs[$name] = $tab;
 		}
 
@@ -36,10 +44,12 @@ class Menus {
 	}
 
 	/**
-     * @param Elgg\Hook $hook
-     * @return mixed
-     */
-    public static function prepareTabs(\Elgg\Hook $hook) {
+	 * Inject the "all members" tab and normalise tab descriptors for menu rendering.
+	 *
+	 * @param \Elgg\Hook $hook "members:config", "tabs"
+	 * @return array
+	 */
+	public static function prepareTabs(\Elgg\Hook $hook) {
 		$return = $hook->getValue();
 
 
@@ -52,12 +62,15 @@ class Menus {
 			if (!isset($value['name'])) {
 				$value['name'] = $key;
 			}
+
 			if (isset($value['title'])) {
 				$value['text'] = $value['title'];
 			}
+
 			if (isset($value['url'])) {
 				$value['href'] = $value['url'];
 			}
+
 			$return[$key] = $value;
 		}
 
@@ -65,10 +78,12 @@ class Menus {
 	}
 
 	/**
-     * @param Elgg\Hook $hook
-     * @return mixed
-     */
-    public static function setupSiteMenu(\Elgg\Hook $hook) {
+	 * Drop the Members entry from the site menu when no listing tabs are configured.
+	 *
+	 * @param \Elgg\Hook $hook "register", "menu:site"
+	 * @return \Elgg\Menu\PreparedMenu|null
+	 */
+	public static function setupSiteMenu(\Elgg\Hook $hook) {
 		$return = $hook->getValue();
 
 
@@ -81,5 +96,4 @@ class Menus {
 
 		return $return;
 	}
-
 }

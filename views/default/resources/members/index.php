@@ -14,9 +14,9 @@ if (!$selected || !array_key_exists($selected, $tabs)) {
 	$selected = array_values($tabs)[0]['name'];
 }
 
-$params = array(
+$params = [
 	'selected' => $selected,
-	'options' => array(
+	'options' => [
 		'type' => 'user',
 		'full_view' => false,
 		'no_results' => elgg_echo('members:no_results'),
@@ -26,8 +26,8 @@ $params = array(
 		'pagination_type' => 'default',
 		'base_url' => elgg_get_current_url(),
 		'list_id' => "members-$selected",
-	),
-);
+	],
+];
 
 $content = elgg_trigger_plugin_hook('members:list', $selected, $params, null);
 if ($content === null) {
