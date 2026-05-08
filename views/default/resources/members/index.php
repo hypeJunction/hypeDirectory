@@ -29,7 +29,7 @@ $params = [
 	],
 ];
 
-$content = elgg_trigger_plugin_hook('members:list', $selected, $params, null);
+$content = elgg_trigger_event_results('members:list', $selected, $params, null);
 if ($content === null) {
 	throw new \Elgg\Exceptions\Http\EntityNotFoundException();
 }

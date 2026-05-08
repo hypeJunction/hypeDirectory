@@ -11,11 +11,11 @@ use Elgg\IntegrationTestCase;
 class TabsIntegrationTest extends IntegrationTestCase {
 
     public function up() {
-        elgg_register_plugin_hook_handler('members:config', 'tabs', [Menus::class, 'prepareTabs'], 999);
+        elgg_register_event_handler('members:config', 'tabs', [Menus::class, 'prepareTabs'], 999);
     }
 
     public function down() {
-        elgg_unregister_plugin_hook_handler('members:config', 'tabs', [Menus::class, 'prepareTabs']);
+        elgg_unregister_event_handler('members:config', 'tabs', [Menus::class, 'prepareTabs']);
     }
 
     /**
