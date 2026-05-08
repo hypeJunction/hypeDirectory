@@ -1,4 +1,15 @@
-## Unreleased — Elgg 4.x migration (2026-04-13)
+## [5.0.0] — Elgg 5.x migration (2026-05-08)
+
+- Migrated to Elgg 5.x (4.x → 5.x). Requires PHP 8.2+.
+- `'hooks'` key in `elgg-plugin.php` renamed to `'events'`.
+- Handler classes: `\Elgg\Hook` → `\Elgg\Event` in all type hints.
+- `elgg_trigger_plugin_hook()` → `elgg_trigger_event_results()` in `Menus::getTabs()`.
+- `elgg_unregister_plugin_hook_handler()` → `elgg_unregister_event_handler()` in `Bootstrap::init()`.
+- Docker stack updated to `php:8.2-apache`, `mysql:8.0`, `elgg/elgg 5.1.12`.
+- PHPUnit tests adapted for Elgg 5.x events service API.
+- No data migration required.
+
+## [4.0.0] — Elgg 4.x migration (2026-04-13)
 
 - Migrated to Elgg 4.x (3.x → 4.x). `manifest.xml` removed, metadata in `elgg-plugin.php` + `composer.json`.
 - Plugin id is now lowercase `hypedirectory` (matches dir name; required by Elgg 4.x).

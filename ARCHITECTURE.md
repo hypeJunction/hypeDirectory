@@ -57,10 +57,17 @@ hypedirectory/
 - Branch: `migrate/elgg-4.x`.
 - `manifest.xml` deleted; metadata moved to `composer.json` + `elgg-plugin.php` `'plugin'` key (4.x replacement).
 - `start.php` removed; bootstrap moved to `hypeJunction\Directory\Bootstrap`.
-- Hook handlers rewritten to single-arg `\Elgg\Hook` signature.
+- Hook handlers rewritten to single-arg `\Elgg\Hook` signature (4.x) → `\Elgg\Event` (5.x).
 - **Bug fix during gate run:** all `elgg_get_plugin_setting(..., 'hypeDirectory', ...)` and `elgg_get_plugin_from_id('hypeDirectory')` callsites were changed to lowercase `'hypedirectory'`. The plugin id MUST match the lowercase directory name in 4.x; the camelCase string was silently returning `false`/`null` and dropping all tabs from `Menus::getTabs()`.
 - `composer.json`: `composer/installers ~1.0` → `^2.0`; added `elgg/elgg ^4.0`, `hypejunction/hypelists`; added `extra.elgg-plugin.id = "hypedirectory"`; switched license to `GPL-2.0-or-later`.
 - `members` core dependency declared via `elgg-plugin.php` `'plugin'.'dependencies'` (it ships in `vendor/elgg/elgg/mod/members`, not as a separate composer package).
+
+## 5.x migration notes (2026-05-08)
+
+- `elgg-plugin.php` `'hooks'` → `'events'`.
+- All handlers: `\Elgg\Hook` → `\Elgg\Event`, `elgg_trigger_plugin_hook()` → `elgg_trigger_event_results()`.
+- Docker stack: `php:8.2-apache`, `mysql:8.0`, `elgg/elgg 5.1.12`.
+- PHPUnit tests adapted: `_elgg_services()->hooks` → `_elgg_services()->events`.
 
 ## No data migration required
 
