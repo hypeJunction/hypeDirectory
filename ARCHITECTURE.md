@@ -1,14 +1,14 @@
-# hypeDirectory — Architecture (Elgg 4.x)
+# hypeDirectory — Architecture (Elgg 5.x)
 
 Improved members directory pages for Elgg. Provides tab-driven listings, configurable sorting, and optional public-access gating for the `/members` route family.
 
 ## Plugin metadata
 
-- **id:** `hypedirectory` (lowercase, matches dir name — Elgg 4.x requirement)
+- **id:** `hypedirectory` (lowercase, matches dir name)
 - **vendor:** `hypejunction/hypedirectory`
-- **version:** 1.0.3
-- **php:** >=7.4
-- **elgg:** ^4.0
+- **version:** 5.0.0
+- **php:** >=8.2
+- **elgg:** ^5.0
 - **dependencies:** `members` (core), `hypelists` (hypejunction)
 
 ## Directory layout
@@ -32,7 +32,7 @@ hypedirectory/
     └── playwright/
 ```
 
-## Registered hooks (declarative, elgg-plugin.php)
+## Registered events (declarative, elgg-plugin.php)
 
 | event             | type        | handler                                            | priority |
 |-------------------|-------------|----------------------------------------------------|----------|
