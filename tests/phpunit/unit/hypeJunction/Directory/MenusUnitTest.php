@@ -17,7 +17,7 @@ class MenusUnitTest extends UnitTestCase {
      * @return void
      */
     public function testPrepareTabsInjectsAllTab(): void {
-        $hook = $this->getMockBuilder(\Elgg\Hook::class)->getMock();
+        $hook = $this->getMockBuilder(\Elgg\Event::class)->disableOriginalConstructor()->getMock();
         $hook->method('getValue')->willReturn([]);
 
         $result = Menus::prepareTabs($hook);
@@ -32,7 +32,7 @@ class MenusUnitTest extends UnitTestCase {
      * @return void
      */
     public function testPrepareTabsNormalisesExistingEntries(): void {
-        $hook = $this->getMockBuilder(\Elgg\Hook::class)->getMock();
+        $hook = $this->getMockBuilder(\Elgg\Event::class)->disableOriginalConstructor()->getMock();
         $hook->method('getValue')->willReturn([
             'newest' => [
                 'title' => 'Newest',

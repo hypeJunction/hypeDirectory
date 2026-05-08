@@ -18,7 +18,7 @@ class BootstrapIntegrationTest extends IntegrationTestCase {
      * @return void
      */
     public function testMembersListHandlersUnregistered(): void {
-        $hooks = _elgg_services()->hooks;
+        $hooks = _elgg_services()->events;
         foreach (['newest', 'alpha', 'popular', 'online'] as $type) {
             $handlers = $hooks->getAllHandlers();
             // Bootstrap::init should have removed any function named

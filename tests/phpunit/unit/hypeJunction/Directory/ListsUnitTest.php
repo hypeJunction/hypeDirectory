@@ -19,7 +19,7 @@ class ListsUnitTest extends UnitTestCase {
      * @return void
      */
     public function testRenderReturnsNullWhenValuePresent(): void {
-        $hook = $this->getMockBuilder(\Elgg\Hook::class)->getMock();
+        $hook = $this->getMockBuilder(\Elgg\Event::class)->disableOriginalConstructor()->getMock();
         $hook->method('getValue')->willReturn('existing');
         $hook->method('getType')->willReturn('newest');
 
