@@ -16,7 +16,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 		// Clean up members plugin hook registration
 		$list_types = ['newest', 'alpha', 'popular', 'online'];
 		foreach ($list_types as $type) {
-			elgg_unregister_plugin_hook_handler('members:list', $type, "members_list_$type");
+			elgg_unregister_event_handler('members:list', $type, "members_list_$type");
 		}
 	}
 }

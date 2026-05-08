@@ -10,16 +10,16 @@ class Lists {
 	/**
 	 * Prepares members list
 	 *
-	 * @param \Elgg\Hook $hook "members:list"
+	 * @param \Elgg\Event $event "members:list"
 	 * @return mixed
 	 */
-	public static function render(\Elgg\Hook $hook) {
-		if ($hook->getValue()) {
+	public static function render(\Elgg\Event $event) {
+		if ($event->getValue()) {
 			return;
 		}
 
-		if (elgg_view_exists("members/listing/$hook->getType()")) {
-			return elgg_view("members/listing/$hook->getType()", $hook->getParams());
+		if (elgg_view_exists("members/listing/$event->getType()")) {
+			return elgg_view("members/listing/$event->getType()", $event->getParams());
 		}
 	}
 }

@@ -15,7 +15,7 @@ class Menus {
 	 * @return array
 	 */
 	public static function getTabs($selected = '', $filter = true) {
-		$tabs = elgg_trigger_plugin_hook('members:config', 'tabs', null, []);
+		$tabs = elgg_trigger_event_results('members:config', 'tabs', [], []);
 		foreach ($tabs as $name => $tab) {
 			$priority = elgg_extract('priority', $tab, 1);
 			$priority = elgg_get_plugin_setting("tab:$name", 'hypedirectory', $priority);
@@ -46,11 +46,11 @@ class Menus {
 	/**
 	 * Inject the "all members" tab and normalise tab descriptors for menu rendering.
 	 *
-	 * @param \Elgg\Hook $hook "members:config", "tabs"
+	 * @param \Elgg\Event $event "members:config", "tabs"
 	 * @return array
 	 */
-	public static function prepareTabs(\Elgg\Hook $hook) {
-		$return = $hook->getValue();
+	public static function prepareTabs(\Elgg\Event $event) {
+		$return = $event->getValue();
 
 
 		$return['all'] = [
@@ -80,11 +80,11 @@ class Menus {
 	/**
 	 * Drop the Members entry from the site menu when no listing tabs are configured.
 	 *
-	 * @param \Elgg\Hook $hook "register", "menu:site"
+	 * @param \Elgg\Event $event "register", "menu:site"
 	 * @return \Elgg\Menu\PreparedMenu|null
 	 */
-	public static function setupSiteMenu(\Elgg\Hook $hook) {
-		$return = $hook->getValue();
+	public static function setupSiteMenu(\Elgg\Event $event) {
+		$return = $event->getValue();
 
 
 		$tabs = self::getTabs();
