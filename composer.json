@@ -1,6 +1,6 @@
 {
 	"name": "hypejunction/hypedirectory",
-	"version": "1.0.3",
+	"version": "5.0.0",
 	"type": "elgg-plugin",
 	"description": "Improved members pages for Elgg",
 	"homepage": "http://hypejunction.com",
@@ -17,9 +17,9 @@
 		}
 	],
 	"require": {
-		"php": ">=7.4",
+		"php": ">=8.2",
 		"composer/installers": "^2.0",
-		"elgg/elgg": "^4.0",
+		"elgg/elgg": "^5.0",
 		"hypejunction/hypelists": "*"
 	},
 	"autoload": {
