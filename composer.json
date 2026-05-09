@@ -3,7 +3,7 @@
 	"version": "5.0.0",
 	"type": "elgg-plugin",
 	"description": "Improved members pages for Elgg",
-	"homepage": "http://hypejunction.com",
+	"homepage": "https://github.com/hypeJunction/hypeDirectory",
 	"keywords": [
 		"elgg",
 		"plugin",
@@ -13,7 +13,7 @@
 	"authors": [
 		{
 			"name": "Ismayil Khayredinov",
-			"email": "info@hypejunction.com"
+			"email": "ismayil.khayredinov@gmail.com"
 		}
 	],
 	"require": {
