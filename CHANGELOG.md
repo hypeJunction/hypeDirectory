@@ -1,3 +1,10 @@
+## [6.0.0] — Elgg 6.x migration (2026-05-09)
+
+- Migrated to Elgg 6.x (5.x → 6.x). Requires PHP 8.2+.
+- Bumped `elgg/elgg` constraint to `^6.0`.
+- No AMD JS in this plugin — no JS conversion needed.
+- Docker stack upgraded to Elgg 6.x, PHPUnit ~10.5.
+
 ## [5.0.0] — Elgg 5.x migration (2026-05-08)
 
 - Migrated to Elgg 5.x (4.x → 5.x). Requires PHP 8.2+.

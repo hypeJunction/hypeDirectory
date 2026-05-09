@@ -7,7 +7,7 @@ use hypeJunction\Directory\Menus;
 return [
 	'plugin' => [
 		'name' => 'hypeDirectory',
-		'version' => '5.0.0',
+		'version' => '6.0.0',
 		'dependencies' => [
 			'members' => [],
 			'hypelists' => [],

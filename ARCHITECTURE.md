@@ -1,4 +1,4 @@
-# hypeDirectory — Architecture (Elgg 5.x)
+# hypeDirectory — Architecture (Elgg 6.x)
 
 Improved members directory pages for Elgg. Provides tab-driven listings, configurable sorting, and optional public-access gating for the `/members` route family.
 
