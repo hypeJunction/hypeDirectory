@@ -8,7 +8,6 @@ Member Directory for Elgg
 
 ![Members](https://raw.github.com/hypeJunction/Elgg-hypeDirectory/master/screenshots/members.png "Members Page")
 
-
 ## Compatibility
 
 | Plugin version | Elgg version |
