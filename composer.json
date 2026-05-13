@@ -1,41 +1,41 @@
 {
-	"name": "hypejunction/hypedirectory",
-	"version": "1.0.3",
-	"type": "elgg-plugin",
-	"description": "Improved members pages for Elgg",
-	"homepage": "http://hypejunction.com",
-	"keywords": [
-		"elgg",
-		"plugin",
-		"members"
-	],
-	"license": "GPL-2.0-or-later",
-	"authors": [
-		{
-			"name": "Ismayil Khayredinov",
-			"email": "info@hypejunction.com"
-		}
-	],
-	"require": {
-		"php": ">=7.4",
-		"composer/installers": "^2.0",
-		"elgg/elgg": "^4.0",
-		"hypejunction/hypelists": "*"
-	},
-	"autoload": {
-		"psr-4": {
-			"hypeJunction\\Directory\\": "classes/hypeJunction/Directory/"
-		}
-	},
-	"extra": {
-		"installer-name": "hypedirectory",
-		"elgg-plugin": {
-			"id": "hypedirectory"
-		}
-	},
-	"config": {
-		"allow-plugins": {
-			"composer/installers": true
-		}
-	}
+    "name": "hypejunction/hypedirectory",
+    "version": "4.0.0",
+    "type": "elgg-plugin",
+    "description": "Improved members pages for Elgg",
+    "homepage": "http://hypejunction.com",
+    "keywords": [
+        "elgg",
+        "plugin",
+        "members"
+    ],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Ismayil Khayredinov",
+            "email": "info@hypejunction.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^2.0",
+        "elgg/elgg": "^4.0",
+        "hypejunction/hypelists": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "hypeJunction\\Directory\\": "classes/hypeJunction/Directory/"
+        }
+    },
+    "extra": {
+        "installer-name": "hypedirectory",
+        "elgg-plugin": {
+            "id": "hypedirectory"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
 }
